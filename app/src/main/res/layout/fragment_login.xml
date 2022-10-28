@@ -141,7 +141,10 @@
             android:textColor="@color/white"
             app:backgroundTint="@color/black" />
 
+
         <ProgressBar
+
+            android:background="#80000000"
             android:id="@+id/login_progress"
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="36dp"

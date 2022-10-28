@@ -10,17 +10,13 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class AuthActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAuthBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
-
         val adapter = ViewPagerAdapter(supportFragmentManager,lifecycle)
         binding.viewPager.adapter = adapter
-
           TabLayoutMediator(binding.tabLayout,binding.viewPager){tab,position->
               when(position){
                   0->{
