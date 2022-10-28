@@ -23,6 +23,9 @@
         tools:layout="@layout/fragment_user_profile">
 
 
+        <action
+            android:id="@+id/action_userProfileFragment_to_tablayoutFragment"
+            app:destination="@id/tablayoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"

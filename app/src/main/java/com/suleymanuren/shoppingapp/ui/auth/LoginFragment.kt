@@ -1,7 +1,9 @@
 package com.suleymanuren.shoppingapp.ui.auth
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -25,6 +27,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class LoginFragment : Fragment() {
     lateinit var binding: FragmentLoginBinding
     private val viewModel: AuthViewModel by viewModels()
+    lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -60,9 +64,9 @@ class LoginFragment : Fragment() {
                     Toast.makeText(requireContext(), it.error, Toast.LENGTH_SHORT).show()
                 }
                 is UiState.Success<*> -> {
-                    val preferences = requireActivity().getSharedPreferences("PREFS", 0)
-                    val editor = preferences.edit()
-                    editor.putBoolean("isLogin", true)
+                    sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putBoolean("isLoggedIn", true)
                     editor.apply()
                     binding.loginBtn.text = "Login"
                     binding.loginProgress.hide()

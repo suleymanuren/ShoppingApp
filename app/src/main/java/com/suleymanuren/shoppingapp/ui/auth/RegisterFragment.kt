@@ -1,7 +1,9 @@
 package com.suleymanuren.shoppingapp.ui.auth
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -27,6 +29,7 @@ class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
     private val viewModel: AuthViewModel by viewModels()
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,6 +66,10 @@ class RegisterFragment : Fragment() {
                     binding.registerProgress.show()
                 }
                 is UiState.Success<*> -> {
+                    sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putBoolean("isLoggedIn", true)
+                    editor.apply()
                     binding.registerBtn.text = "Register"
                     binding.registerProgress.hide()
                     AlertDialog.Builder(requireContext())

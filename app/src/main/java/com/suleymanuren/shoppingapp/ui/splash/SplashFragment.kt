@@ -1,6 +1,7 @@
 package com.suleymanuren.shoppingapp.ui.splash
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ import com.suleymanuren.shoppingapp.ui.auth.AuthViewModel
 
 class SplashFragment : Fragment() {
     private lateinit var binding : FragmentSplashBinding
+    lateinit var sharedPreferences: SharedPreferences
 
 
     override fun onCreateView(
@@ -35,10 +37,10 @@ class SplashFragment : Fragment() {
     }
 
     private fun splashScreen(){
-        val preferences = requireActivity().getSharedPreferences("PREFERENCE_NAME", Context.MODE_PRIVATE)
-        val isLogin = preferences.getBoolean("isLogin", false)
+        sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false)
         Handler().postDelayed({
-            if (isLogin){
+            if (isLoggedIn){
                 Navigation.findNavController(requireView()).navigate(R.id.action_splashFragment_to_productFragment)
             }else{
                 Navigation.findNavController(requireView()).navigate(R.id.action_splashFragment_to_tablayoutFragment)
