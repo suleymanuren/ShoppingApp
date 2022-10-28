@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.suleymanuren.shoppingapp.MainActivity
 import com.suleymanuren.shoppingapp.R
@@ -59,7 +60,10 @@ class LoginFragment : Fragment() {
                     Toast.makeText(requireContext(), it.error, Toast.LENGTH_SHORT).show()
                 }
                 is UiState.Success<*> -> {
-
+                    val preferences = requireActivity().getSharedPreferences("PREFS", 0)
+                    val editor = preferences.edit()
+                    editor.putBoolean("isLogin", true)
+                    editor.apply()
                     binding.loginBtn.text = "Login"
                     binding.loginProgress.hide()
                     AlertDialog.Builder(requireContext())
@@ -67,8 +71,9 @@ class LoginFragment : Fragment() {
                         .setMessage("Login Success")
                         .show()
                     Handler().postDelayed({
-                        startActivity(Intent(context, MainActivity::class.java))
-                        requireActivity().finish()},
+
+                        Navigation.findNavController(binding.root).navigate(R.id.action_tablayoutFragment_to_productFragment)
+                    },
                         1500)
 
                 }
@@ -98,19 +103,10 @@ class LoginFragment : Fragment() {
             }
         }
         return isValid
-    }
+    }}
 
     //CHECKING IS USER LOGGED IN OR NOT
     //IF USER ALL-READY LOGGED IN, WE WILL NOT SHOW LOGIN PAGE
     //WE WILL DIRECTLY GO TO MAIN PAGE
-    override fun onStart() {
-        super.onStart()
-        viewModel.getSession {
-            if (it != null){
-                startActivity(Intent(context, MainActivity::class.java))
-                requireActivity().finish()
-            }
-            }
-        }
-    }
+
 

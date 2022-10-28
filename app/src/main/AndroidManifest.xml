@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingApp">
         <activity
-            android:name=".AuthActivity"
+            android:name=".MainActivity"
 
             android:exported="true">
             <intent-filter>
@@ -28,7 +28,6 @@
                 android:value="" />
         </activity>
 
-        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>

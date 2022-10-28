@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.suleymanuren.shoppingapp.MainActivity
 import com.suleymanuren.shoppingapp.R
@@ -69,8 +70,8 @@ class RegisterFragment : Fragment() {
                         .setMessage("Register Success")
                         .show()
                     Handler().postDelayed({
-                        startActivity(Intent(context, MainActivity::class.java))
-                        requireActivity().finish()},
+                        Navigation.findNavController(binding.root).navigate(R.id.action_tablayoutFragment_to_productFragment)
+                    },
                         1500)
 
                 }

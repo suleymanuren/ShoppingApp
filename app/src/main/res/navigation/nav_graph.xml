@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/productFragment"
+    app:startDestination="@id/splashFragment"
     android:id="@+id/nav_graph">
 
     <fragment
@@ -24,8 +24,25 @@
 
 
     </fragment>
-
-
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.suleymanuren.shoppingapp.ui.splash.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_tablayoutFragment"
+            app:destination="@id/tablayoutFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_productFragment"
+            app:destination="@id/productFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tablayoutFragment"
+        android:name="com.suleymanuren.shoppingapp.ui.tablayout.TablayoutFragment"
+        android:label="TablayoutFragment" >
+        <action
+            android:id="@+id/action_tablayoutFragment_to_productFragment"
+            app:destination="@id/productFragment" />
+    </fragment>
 
 
 </navigation>
