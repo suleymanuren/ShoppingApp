@@ -14,9 +14,9 @@ import com.suleymanuren.shoppingapp.util.UiState
 
 class AuthRepositoryImp(
     val auth: FirebaseAuth,
-    val database: FirebaseFirestore,
-    val appPreferences: SharedPreferences,
-    val gson: Gson
+    private val database: FirebaseFirestore,
+    private val appPreferences: SharedPreferences,
+    private val gson: Gson
 ) : AuthRepository {
 
     override fun registerUser(
