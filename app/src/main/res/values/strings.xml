@@ -11,4 +11,6 @@
     <string name="login_failed">"Login failed"</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="on_boarding_start_button">Start</string>
+    <string name="on_boarding_skip_button">Skip</string>
 </resources>

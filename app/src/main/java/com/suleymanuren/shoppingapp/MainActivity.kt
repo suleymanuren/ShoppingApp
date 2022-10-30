@@ -4,20 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import com.suleymanuren.shoppingapp.databinding.ActivityMainBinding
-import com.suleymanuren.shoppingapp.ui.ViewPagerAdapter
-import com.suleymanuren.shoppingapp.ui.auth.AuthViewModel
+import com.suleymanuren.shoppingapp.feature.auth.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -46,10 +37,13 @@ class MainActivity : AppCompatActivity() {
     private fun hideNavBar() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
+                R.id.onBoardingFragment -> {
+                    binding.bottomNavigation.visibility = View.GONE
+                }
                 R.id.splashFragment -> {
                     binding.bottomNavigation.visibility = View.GONE
                 }
-                R.id.tablayoutFragment -> {
+                R.id.authFragment -> {
                     binding.bottomNavigation.visibility = View.GONE
                 }
                 R.id.productFragment -> {
