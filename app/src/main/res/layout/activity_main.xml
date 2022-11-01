@@ -18,6 +18,16 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
         app:navGraph="@navigation/nav_graph" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="right|bottom"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        android:src="@drawable/products_icon"
+        android:contentDescription="Basket"
+        android:layout_margin="16dp" />
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
