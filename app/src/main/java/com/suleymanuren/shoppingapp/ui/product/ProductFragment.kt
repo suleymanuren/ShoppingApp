@@ -1,20 +1,21 @@
 package com.suleymanuren.shoppingapp.ui.product
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.suleymanuren.shoppingapp.R
 import com.suleymanuren.shoppingapp.data.model.ProductListItem
-import com.suleymanuren.shoppingapp.data.model.ProductListResponse
 import com.suleymanuren.shoppingapp.databinding.FragmentProductBinding
-import com.suleymanuren.shoppingapp.databinding.FragmentUserProfileBinding
 import com.suleymanuren.shoppingapp.ui.product.adapter.HomeProductAdapter
 import com.suleymanuren.shoppingapp.ui.product.adapter.OnProductClickListener
+
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -69,8 +70,11 @@ class ProductFragment : Fragment(), OnProductClickListener {
         }
     }
 
-    override fun onMovieClick(id: Int?) {
-        TODO("Not yet implemented")
+    override fun onProductClick(data: ProductListItem,view: View) {
+        findNavController().navigate(R.id.action_productFragment_to_productDetailFragment, Bundle().apply {
+            putInt("productId", data.id)
+        })
+        Log.d("deneme2", "giden: ${data.id}")
     }
 
     override fun onFavoriteClick(data: ProductListItem) {

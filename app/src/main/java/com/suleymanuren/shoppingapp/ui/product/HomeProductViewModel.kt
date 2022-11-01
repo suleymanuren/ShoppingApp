@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.suleymanuren.shoppingapp.data.model.ProductListItem
-import com.suleymanuren.shoppingapp.data.model.ProductListResponse
 import com.suleymanuren.shoppingapp.data.remote.utils.DataState
 import com.suleymanuren.shoppingapp.domain.repository.ProductsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
