@@ -8,23 +8,44 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="authFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-549" />
+                            <option name="y" value="414" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_authFragment_to_homeFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="onBoardingFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-484" />
-                            <option name="y" value="-256" />
+                            <option name="x" value="-535" />
+                            <option name="y" value="-259" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_onBoardingFragment_to_productFragment">
+                            <entry key="action_onBoardingFragment_to_authFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_onBoardingFragment_to_tablayoutFragment">
+                            <entry key="action_onBoardingFragment_to_homeFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -39,8 +60,7 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="15" />
-                            <option name="y" value="42" />
+                            <option name="y" value="130" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -51,8 +71,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="20" />
-                            <option name="y" value="432" />
+                            <option name="x" value="190" />
+                            <option name="y" value="329" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -63,44 +83,23 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-985" />
-                            <option name="y" value="89" />
+                            <option name="x" value="-1067" />
+                            <option name="y" value="132" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_splashFragment_to_authFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_splashFragment_to_homeFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_splashFragment_to_onBoardingFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_splashFragment_to_productFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_splashFragment_to_tablayoutFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="tablayoutFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-471" />
-                            <option name="y" value="443" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_tablayoutFragment_to_productFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -115,13 +114,13 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="38" />
-                            <option name="y" value="788" />
+                            <option name="x" value="383" />
+                            <option name="y" value="527" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_userProfileFragment_to_tablayoutFragment">
+                            <entry key="action_userProfileFragment_to_authFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

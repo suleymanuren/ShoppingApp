@@ -7,9 +7,3 @@ data class User(
     val password: String = "",
     val repassword: String = "",
 )
-
-data class storeUser(
-    var id: String = "",
-    val username: String = "",
-    val email: String = "",
-)

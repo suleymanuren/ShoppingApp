@@ -4,9 +4,8 @@ import android.os.Handler
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.Navigation
 import com.suleymanuren.shoppingapp.data.model.User
-import com.suleymanuren.shoppingapp.data.repository.AuthRepository
+import com.suleymanuren.shoppingapp.domain.repository.AuthRepository
 import com.suleymanuren.shoppingapp.util.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
