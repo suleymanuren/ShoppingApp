@@ -1,35 +1,36 @@
-package com.suleymanuren.shoppingapp.ui.product
+package com.suleymanuren.shoppingapp.ui.productDetail
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.suleymanuren.shoppingapp.R
 import com.suleymanuren.shoppingapp.data.model.ProductListItem
-import com.suleymanuren.shoppingapp.databinding.FragmentProductBinding
+import com.suleymanuren.shoppingapp.databinding.FragmentProductDetailBinding
+import com.suleymanuren.shoppingapp.ui.product.HomeViewEvent
+import com.suleymanuren.shoppingapp.ui.product.HomeViewModel
+import com.suleymanuren.shoppingapp.ui.product.HomeViewState
 import com.suleymanuren.shoppingapp.ui.product.adapter.HomeProductAdapter
-import com.suleymanuren.shoppingapp.ui.product.adapter.OnProductClickListener
+import com.suleymanuren.shoppingapp.ui.productDetail.adapter.HomeProductDetailAdapter
+import com.suleymanuren.shoppingapp.ui.productDetail.adapter.OnProductDetailClickListener
 
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class ProductFragment : Fragment(), OnProductClickListener {
-    private val viewModel by viewModels<HomeViewModel>()
-    private lateinit var binding: FragmentProductBinding
+class ProductDetailFragment : Fragment(), OnProductDetailClickListener {
+    private val viewModel by viewModels<ProductDetailViewModel>()
+    private lateinit var binding: FragmentProductDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentProductBinding.inflate(inflater, container, false)
+        binding = FragmentProductDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -40,13 +41,13 @@ class ProductFragment : Fragment(), OnProductClickListener {
             launch {
                 viewModel.uiState.collect {
                     when (it) {
-                        is HomeViewState.Success -> {
-                            binding.productListRecyclerview.adapter =
-                                HomeProductAdapter(this@ProductFragment).apply {
+                        is ProductViewState.Success -> {
+                            binding.rvPostsList.adapter =
+                                HomeProductDetailAdapter(this@ProductDetailFragment,).apply {
                                     submitList(it.product)
                                 }
                         }
-                        is HomeViewState.Loading -> {
+                        is ProductViewState.Loading -> {
 
                         }
 
@@ -57,7 +58,7 @@ class ProductFragment : Fragment(), OnProductClickListener {
             launch {
                 viewModel.uiEvent.collect {
                     when (it) {
-                        is HomeViewEvent.ShowError -> {
+                        is ProductViewEvent.ShowError -> {
                             Snackbar.make(
                                 binding.root,
                                 it.message.toString(),
@@ -68,16 +69,5 @@ class ProductFragment : Fragment(), OnProductClickListener {
                 }
             }
         }
-    }
-
-    override fun onProductClick(data: ProductListItem,view: View) {
-        findNavController().navigate(R.id.action_productFragment_to_productDetailFragment, Bundle().apply {
-            putInt("productId", data.id)
-        })
-        Log.d("deneme2", "giden: ${data.id}")
-    }
-
-    override fun onFavoriteClick(data: ProductListItem) {
-        TODO("Not yet implemented")
     }
 }

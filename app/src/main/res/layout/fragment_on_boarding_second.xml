@@ -18,6 +18,7 @@
             android:textAlignment="center"
             android:textColor="#263859"
             android:textSize="14sp"
+
             app:layout_constraintBottom_toTopOf="@id/ivIcon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

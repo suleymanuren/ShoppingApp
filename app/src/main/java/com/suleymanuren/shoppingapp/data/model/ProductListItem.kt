@@ -26,3 +26,13 @@ data class ProductListItem(
         val rate: Double
     )
 }
+
+data class ProductDetail(
+    val category: String,
+    val description: String,
+    val id: Int,
+    val image: String,
+    val price: Double,
+    val rating: ProductListItem.Rating,
+    val title: String
+)
