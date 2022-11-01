@@ -13,12 +13,12 @@ plugins {
 
 android {
     namespace 'com.suleymanuren.shoppingapp'
-    compileSdk 33
+    compileSdk project.compileSdkVersion
 
     defaultConfig {
         applicationId "com.suleymanuren.shoppingapp"
-        minSdk 21
-        targetSdk 33
+        minSdk project.minSdkVersion
+        targetSdk project.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -45,49 +45,60 @@ android {
 }
 
 dependencies {
+
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
-    implementation "com.google.android.material:$material_version"
-    implementation "androidx.constraintlayout:$constraintlayout_version"
-    implementation "androidx.annotation:$annotation_version"
-    testImplementation("junit:junit:$junit_version")
-    androidTestImplementation("androidx.test.ext:junit:$ext_junit_version")
-    androidTestImplementation("androidx.test.espresso:espresso-core:$espresso_version")
-
+    implementation "com.google.android.material:material:$material_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "androidx.annotation:annotation:$annotation_version"
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 
     //Firebase
     implementation platform("com.google.firebase:firebase-bom:$firebase_bom_version")
-    implementation "com.google.firebase:$firebase_analytics_ktx"
-    implementation "com.google.firebase:$firebase_firestore_ktx"
-    implementation "com.google.firebase:$firebase_auth_ktx"
-    implementation "com.google.firebase:$firebase_storage_ktx"
-    implementation "com.google.firebase:$firebase_database_ktx"
-    implementation "org.jetbrains.kotlinx:$coroutines_play_services"
+    implementation "com.google.firebase:firebase-analytics-ktx"
+    implementation "com.google.firebase:firebase-firestore:$firebase_firestore_version"
+    implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
+    implementation "com.google.firebase:firebase-storage-ktx:$firebase_storage_ktx_version"
+    implementation "com.google.firebase:firebase-database-ktx:$firebase_database_ktx_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutines_play_services_version"
 
     //navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.legacy:legacy-support-v4:$legacy_support_version"
 
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
-    //Fragment
+    //fragment
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
 
     //Gson
     implementation "com.google.code.gson:gson:$gson_version"
 
     //Shared Preferences
-    implementation "androidx.preference:preference-ktx:$preference_version"
+    implementation "androidx.preference:preference-ktx:$preference_ktx_version"
 
     //Hilt
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    
+    implementation("com.google.dagger:hilt-android:$hilt_version")
+    kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
+
     //Lottie
     implementation "com.airbnb.android:lottie:$lottie_version"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$converter_gson_version"
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
 
 }
 kapt {
