@@ -51,9 +51,25 @@ class HomeProductDetailAdapter(private val listener: OnProductDetailClickListene
                     binding.increase.visible()
                 } else {
                     Toast.makeText(binding.root.context, "You can't add less than 1", Toast.LENGTH_SHORT).show()
+                    }
                 }
 
+            if (binding.productDescription.text.toString().length > 100) {
+                binding.readMore.visible()
+                binding.productDescription.maxLines = 2
+                binding.readMore.setOnClickListener {
+                    if (binding.readMore.text.toString() == "Read More") {
+                        binding.productDescription.maxLines = 100
+                        binding.readMore.text = "Read Less"
+                    } else {
+                        binding.productDescription.maxLines = 2
+                        binding.readMore.text = "Read More"
+                    }
                 }
+            } else {
+                binding.readMore.invisible()
+            }
+
                 }
 
             }

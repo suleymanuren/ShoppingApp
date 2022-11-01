@@ -20,6 +20,9 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
+        app:rippleColor="@color/floating_button_ripple_color"
+        android:backgroundTint="@color/purple_200"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:foregroundGravity="right|bottom"

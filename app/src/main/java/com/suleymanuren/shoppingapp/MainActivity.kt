@@ -9,6 +9,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.suleymanuren.shoppingapp.databinding.ActivityMainBinding
 import com.suleymanuren.shoppingapp.feature.auth.AuthViewModel
+import com.suleymanuren.shoppingapp.util.gone
 import com.suleymanuren.shoppingapp.util.invisible
 import com.suleymanuren.shoppingapp.util.visible
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.onBoardingFragment -> {
-                    binding.bottomNavigation.invisible()
+                    binding.bottomNavigation.gone()
                 }
                 R.id.splashFragment -> {
                     binding.bottomNavigation.invisible()

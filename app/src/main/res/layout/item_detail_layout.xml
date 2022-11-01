@@ -80,6 +80,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/product_category" />
 
             <TextView
+                android:id="@+id/readMore"
+                android:text="Read More"
+                android:textColor="@color/purple_500"
+                android:gravity="center"
+                style="@style/TextAppearance.Material3.TitleMedium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/product_description"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+
+
+            <TextView
                 android:id="@+id/product_price"
                 style="@style/TextAppearance.Material3.TitleSmall"
                 android:layout_width="0dp"
