@@ -9,6 +9,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.suleymanuren.shoppingapp.databinding.ActivityMainBinding
 import com.suleymanuren.shoppingapp.feature.auth.AuthViewModel
+import com.suleymanuren.shoppingapp.util.invisible
+import com.suleymanuren.shoppingapp.util.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -16,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         setupBottomAppBarNavigation()
         hideNavBar()
+        hideTopBar()
+        hideFloatingActionButton()
     }
    //Bottom app bar navigation
     private fun setupBottomAppBarNavigation() {
@@ -33,27 +36,86 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
 
     }
+
     //Hide bottom navigation bar for splash and auth tablayout
     private fun hideNavBar() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.onBoardingFragment -> {
-                    binding.bottomNavigation.visibility = View.GONE
+                    binding.bottomNavigation.invisible()
                 }
                 R.id.splashFragment -> {
-                    binding.bottomNavigation.visibility = View.GONE
+                    binding.bottomNavigation.invisible()
                 }
                 R.id.authFragment -> {
-                    binding.bottomNavigation.visibility = View.GONE
+                    binding.bottomNavigation.invisible()
                 }
                 R.id.productFragment -> {
-                    binding.bottomNavigation.visibility = View.VISIBLE
+                    binding.bottomNavigation.visible()
                 }
                 R.id.searchFragment -> {
-                    binding.bottomNavigation.visibility = View.VISIBLE
+                    binding.bottomNavigation.visible()
                 }
                 R.id.userProfileFragment -> {
-                    binding.bottomNavigation.visibility = View.VISIBLE
+                    binding.bottomNavigation.visible()
+                }
+            }
+        }
+    }
+
+    //Hide top bar for splash and auth tablayout
+    private fun hideTopBar() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.onBoardingFragment -> {
+                    supportActionBar?.hide()
+                }
+                R.id.splashFragment -> {
+                    supportActionBar?.hide()
+                }
+                R.id.authFragment -> {
+                    supportActionBar?.hide()
+                }
+                R.id.productFragment -> {
+                    supportActionBar?.show()
+                }
+                R.id.searchFragment -> {
+                    supportActionBar?.show()
+                }
+                R.id.userProfileFragment -> {
+                    supportActionBar?.show()
+                }
+                R.id.productDetailFragment -> {
+                    supportActionBar?.hide()
+                }
+            }
+        }
+    }
+
+    //Hide floating action button for splash and auth tablayout
+    private fun hideFloatingActionButton() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.onBoardingFragment -> {
+                    binding.fab.invisible()
+                }
+                R.id.splashFragment -> {
+                    binding.fab.invisible()
+                }
+                R.id.authFragment -> {
+                    binding.fab.invisible()
+                }
+                R.id.productFragment -> {
+                    binding.fab.visible()
+                }
+                R.id.searchFragment -> {
+                    binding.fab.visible()
+                }
+                R.id.userProfileFragment -> {
+                    binding.fab.visible()
+                }
+                R.id.productDetailFragment -> {
+                    binding.fab.visible()
                 }
             }
         }
