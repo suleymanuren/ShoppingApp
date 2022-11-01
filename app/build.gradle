@@ -45,54 +45,49 @@ android {
 }
 
 dependencies {
+    implementation "androidx.core:core-ktx:$core_ktx_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "com.google.android.material:$material_version"
+    implementation "androidx.constraintlayout:$constraintlayout_version"
+    implementation "androidx.annotation:$annotation_version"
+    testImplementation("junit:junit:$junit_version")
+    androidTestImplementation("androidx.test.ext:junit:$ext_junit_version")
+    androidTestImplementation("androidx.test.espresso:espresso-core:$espresso_version")
 
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.annotation:annotation:1.5.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     //Firebase
-    implementation platform('com.google.firebase:firebase-bom:31.0.1')
-    implementation 'com.google.firebase:firebase-analytics-ktx'
-    implementation 'com.google.firebase:firebase-firestore:24.4.0'
-    implementation 'com.google.firebase:firebase-auth:21.1.0'
-    implementation 'com.google.firebase:firebase-storage-ktx:20.1.0'
-    implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4"
+    implementation platform("com.google.firebase:firebase-bom:$firebase_bom_version")
+    implementation "com.google.firebase:$firebase_analytics_ktx"
+    implementation "com.google.firebase:$firebase_firestore_ktx"
+    implementation "com.google.firebase:$firebase_auth_ktx"
+    implementation "com.google.firebase:$firebase_storage_ktx"
+    implementation "com.google.firebase:$firebase_database_ktx"
+    implementation "org.jetbrains.kotlinx:$coroutines_play_services"
 
     //navigation
-    def nav_version = "2.5.2"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // LiveData
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
-
-    //fragment
-    implementation 'androidx.fragment:fragment-ktx:1.5.3'
+    //Fragment
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
 
     //Gson
-    implementation 'com.google.code.gson:gson:2.9.1'
+    implementation "com.google.code.gson:gson:$gson_version"
 
     //Shared Preferences
-    implementation 'androidx.preference:preference-ktx:1.2.0'
+    implementation "androidx.preference:preference-ktx:$preference_version"
 
     //Hilt
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
-
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    
     //Lottie
-    implementation 'com.airbnb.android:lottie:3.4.0'
-
-
-
+    implementation "com.airbnb.android:lottie:$lottie_version"
 
 }
 kapt {
