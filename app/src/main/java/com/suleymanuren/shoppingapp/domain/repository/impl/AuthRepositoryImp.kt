@@ -1,4 +1,4 @@
-package com.suleymanuren.shoppingapp.data.repository
+package com.suleymanuren.shoppingapp.domain.repository.impl
 
 import android.content.SharedPreferences
 import com.google.firebase.auth.FirebaseAuth
@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import com.suleymanuren.shoppingapp.data.model.User
+import com.suleymanuren.shoppingapp.domain.repository.AuthRepository
 import com.suleymanuren.shoppingapp.util.FireStoreCollection
 import com.suleymanuren.shoppingapp.util.SharedPrefConstants
 import com.suleymanuren.shoppingapp.util.UiState
