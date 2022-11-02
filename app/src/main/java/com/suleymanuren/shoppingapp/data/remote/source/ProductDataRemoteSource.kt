@@ -8,4 +8,6 @@ import kotlinx.coroutines.flow.Flow
 interface ProductRemoteDataSource {
     suspend fun getProductDetail(productId: Int): Flow<DataState<ProductListItem>>
     suspend fun getProducts(): Flow<DataState<ProductListResponse>>
+    suspend fun searchProduct(searchText: String): Flow<DataState<ProductListResponse>>
+    suspend fun getCategories(): Flow<DataState<List<String>>>
 }

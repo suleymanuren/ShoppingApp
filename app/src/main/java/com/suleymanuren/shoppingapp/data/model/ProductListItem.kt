@@ -25,14 +25,10 @@ data class ProductListItem(
         @SerializedName("rate")
         val rate: Double
     )
+    data class Category(
+        val category: String,
+        val id: Int,
+    )
 }
 
-data class ProductDetail(
-    val category: String,
-    val description: String,
-    val id: Int,
-    val image: String,
-    val price: Double,
-    val rating: ProductListItem.Rating,
-    val title: String
-)
+
