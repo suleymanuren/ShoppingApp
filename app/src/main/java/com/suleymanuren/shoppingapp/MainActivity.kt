@@ -1,14 +1,14 @@
 package com.suleymanuren.shoppingapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.activity.viewModels
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.google.android.material.badge.BadgeDrawable
+import com.google.android.material.badge.BadgeUtils
 import com.suleymanuren.shoppingapp.databinding.ActivityMainBinding
-import com.suleymanuren.shoppingapp.feature.auth.AuthViewModel
 import com.suleymanuren.shoppingapp.util.gone
 import com.suleymanuren.shoppingapp.util.invisible
 import com.suleymanuren.shoppingapp.util.visible
@@ -121,5 +121,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun floatingActionButtonNavigation() {
+        binding.fab.setOnClickListener {
+            navController.navigate(R.id.action_productFragment_to_productDetailFragment)
+        }
+    }
+
+
 
 }

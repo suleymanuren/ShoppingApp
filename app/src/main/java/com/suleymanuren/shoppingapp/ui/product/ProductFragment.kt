@@ -77,7 +77,4 @@ class ProductFragment : Fragment(), OnProductClickListener {
         Log.d("deneme2", "giden: ${data.id}")
     }
 
-    override fun onFavoriteClick(data: ProductListItem) {
-        TODO("Not yet implemented")
-    }
 }

@@ -42,8 +42,8 @@ class HomeViewModel @Inject constructor(
                         _uiState.value = HomeViewState.Success(it.data)
 
                         for (i in it.data.size - 1 downTo 0) {
-                            ProductListItem(
 
+                            ProductListItem(
                                 id = it.data[i].id,
                                 title = it.data[i].title,
                                 description = it.data[i].description,
@@ -52,6 +52,10 @@ class HomeViewModel @Inject constructor(
                                 image = it.data[i].image,
                                 rating = it.data[i].rating
 
+                            )
+                            ProductListItem.Category(
+                                id = it.data[i].id,
+                                category = it.data[i].category
                             )
                         }
 

@@ -13,4 +13,10 @@ interface ProductService {
 
     @GET("products/{id}")
     suspend fun getProductDetail(@Path("id") id: Int): Response<ProductListItem>
+
+    @GET("products/category/{searchText}")
+    suspend fun searchProduct(@Path("searchText") searchText: String): Response<ProductListResponse>
+
+    @GET("products/categories")
+    suspend fun getCategories(): Response<List<String>>
 }

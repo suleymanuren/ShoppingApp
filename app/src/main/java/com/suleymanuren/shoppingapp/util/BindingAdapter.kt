@@ -34,4 +34,6 @@ object BindingAdapter {
     fun productRatingCount(view: TextView, count: Int?) {
         view.text = count.toString()
     }
+
+
 }

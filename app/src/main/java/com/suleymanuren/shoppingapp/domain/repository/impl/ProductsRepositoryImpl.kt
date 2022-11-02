@@ -17,4 +17,12 @@ class ProductsRepositoryImpl @Inject constructor(private val productRemoteDataSo
     override suspend fun getProduct(): Flow<DataState<ProductListResponse>> {
         return productRemoteDataSource.getProducts()
     }
+
+    override suspend fun searchProduct(searchText: String): Flow<DataState<ProductListResponse>> {
+        return productRemoteDataSource.searchProduct(searchText)
+    }
+
+    override suspend fun getCategories(): Flow<DataState<List<String>>> {
+        return productRemoteDataSource.getCategories()
+    }
 }

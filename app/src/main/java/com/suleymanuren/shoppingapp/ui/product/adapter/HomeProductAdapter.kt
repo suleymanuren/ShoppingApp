@@ -1,6 +1,5 @@
 package com.suleymanuren.shoppingapp.ui.product.adapter
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,5 +50,4 @@ class HomeProductAdapter(private val listener: OnProductClickListener) :
 
 interface OnProductClickListener {
     fun onProductClick(data: ProductListItem, view : View)
-    fun onFavoriteClick(products: ProductListItem)
 }
