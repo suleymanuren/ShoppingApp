@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         hideNavBar()
         hideTopBar()
         hideFloatingActionButton()
+        floatingActionButtonNavigation()
     }
    //Bottom app bar navigation
     private fun setupBottomAppBarNavigation() {
@@ -89,6 +90,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.productDetailFragment -> {
                     supportActionBar?.hide()
                 }
+                R.id.productBasketFragment -> {
+                    supportActionBar?.show()
+                }
             }
         }
     }
@@ -118,14 +122,41 @@ class MainActivity : AppCompatActivity() {
                 R.id.productDetailFragment -> {
                     binding.fab.visible()
                 }
+                R.id.productBasketFragment -> {
+                    binding.fab.invisible()
+                }
             }
         }
     }
 
     private fun floatingActionButtonNavigation() {
-        binding.fab.setOnClickListener {
-            navController.navigate(R.id.action_productFragment_to_productDetailFragment)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.productFragment -> {
+                    binding.fab.setOnClickListener {
+
+                        navController.navigate(R.id.action_productFragment_to_productBasketFragment,)
+                    }
+                }
+                R.id.productDetailFragment -> {
+                    binding.fab.setOnClickListener {
+                        navController.navigate(R.id.action_productDetailFragment_to_productBasketFragment)
+                    }
+                }
+                R.id.searchFragment -> {
+                    binding.fab.setOnClickListener {
+                        navController.navigate(R.id.action_searchFragment_to_productBasketFragment)
+                    }
+                }
+                R.id.userProfileFragment -> {
+                    binding.fab.setOnClickListener {
+                        navController.navigate(R.id.action_userProfileFragment_to_productBasketFragment)
+                    }
+                }
+            }
         }
+
+
     }
 
 

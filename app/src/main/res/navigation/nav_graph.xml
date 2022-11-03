@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_productFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_productFragment_to_productBasketFragment"
+            app:destination="@id/productBasketFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -22,6 +25,9 @@
         <action
             android:id="@+id/action_searchFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_productBasketFragment"
+            app:destination="@id/productBasketFragment" />
     </fragment>
 
     <fragment
@@ -34,8 +40,12 @@
         <action
             android:id="@+id/action_userProfileFragment_to_authFragment"
             app:destination="@id/authFragment" />
+        <action
+            android:id="@+id/action_userProfileFragment_to_productBasketFragment"
+            app:destination="@id/productBasketFragment" />
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_splash"
         android:id="@+id/splashFragment"
         android:name="com.suleymanuren.shoppingapp.feature.splash.SplashFragment"
         android:label="SplashFragment" >
@@ -50,6 +60,7 @@
             app:destination="@id/onBoardingFragment" />
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_tablayout"
         android:id="@+id/authFragment"
         android:name="com.suleymanuren.shoppingapp.feature.auth.TabLayout.AuthTabLayoutFragment"
         android:label="authFragment" >
@@ -58,6 +69,7 @@
             app:destination="@id/productFragment" />
     </fragment>
     <fragment
+        tools:layout="@layout/fragment_on_boarding"
         android:id="@+id/onBoardingFragment"
         android:name="com.suleymanuren.shoppingapp.feature.onboarding.fragment.OnBoardingFragment"
         android:label="OnBoardingFragment" >
@@ -72,7 +84,16 @@
         android:id="@+id/productDetailFragment"
         tools:layout="@layout/item_detail_layout"
         android:name="com.suleymanuren.shoppingapp.ui.productDetail.ProductDetailFragment"
-        android:label="ProductDetailFragment" />
+        android:label="ProductDetailFragment" >
+        <action
+            android:id="@+id/action_productDetailFragment_to_productBasketFragment"
+            app:destination="@id/productBasketFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/item_product_basket"
+        android:id="@+id/productBasketFragment"
+        android:name="com.suleymanuren.shoppingapp.ui.basket.ProductBasketFragment"
+        android:label="ProductBasketFragment" />
 
 
 </navigation>

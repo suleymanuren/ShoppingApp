@@ -1,5 +1,6 @@
 package com.suleymanuren.shoppingapp.data.remote.api
 
+import com.suleymanuren.shoppingapp.data.model.BasketProduct
 import com.suleymanuren.shoppingapp.data.model.ProductListItem
 import com.suleymanuren.shoppingapp.data.model.ProductListResponse
 import retrofit2.Response
@@ -12,7 +13,7 @@ interface ProductService {
     suspend fun getProducts(): Response<ProductListResponse>
 
     @GET("products/{id}")
-    suspend fun getProductDetail(@Path("id") id: Int): Response<ProductListItem>
+    suspend fun getProductDetail(@Path("id") id: Int): Response<BasketProduct>
 
     @GET("products/category/{searchText}")
     suspend fun searchProduct(@Path("searchText") searchText: String): Response<ProductListResponse>

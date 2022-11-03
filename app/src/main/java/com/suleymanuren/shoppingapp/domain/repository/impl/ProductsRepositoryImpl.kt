@@ -1,5 +1,6 @@
 package com.suleymanuren.shoppingapp.domain.repository.impl
 
+import com.suleymanuren.shoppingapp.data.model.BasketProduct
 import com.suleymanuren.shoppingapp.data.model.ProductListItem
 import com.suleymanuren.shoppingapp.data.model.ProductListResponse
 import com.suleymanuren.shoppingapp.data.remote.source.ProductRemoteDataSource
@@ -10,7 +11,7 @@ import javax.inject.Inject
 
 class ProductsRepositoryImpl @Inject constructor(private val productRemoteDataSource: ProductRemoteDataSource) :
     ProductsRepository {
-    override suspend fun getProductDetail(productId: Int): Flow<DataState<ProductListItem>> {
+    override suspend fun getProductDetail(productId: Int): Flow<DataState<BasketProduct>> {
         return productRemoteDataSource.getProductDetail(productId)
     }
 
