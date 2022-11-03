@@ -8,12 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
-import com.suleymanuren.shoppingapp.data.model.ProductListItem
+import com.suleymanuren.shoppingapp.data.model.BasketProduct
 import com.suleymanuren.shoppingapp.databinding.FragmentProductDetailBinding
-import com.suleymanuren.shoppingapp.ui.product.HomeViewEvent
-import com.suleymanuren.shoppingapp.ui.product.HomeViewModel
-import com.suleymanuren.shoppingapp.ui.product.HomeViewState
-import com.suleymanuren.shoppingapp.ui.product.adapter.HomeProductAdapter
 import com.suleymanuren.shoppingapp.ui.productDetail.adapter.HomeProductDetailAdapter
 import com.suleymanuren.shoppingapp.ui.productDetail.adapter.OnProductDetailClickListener
 
@@ -70,4 +66,9 @@ class ProductDetailFragment : Fragment(), OnProductDetailClickListener {
             }
         }
     }
+
+    override fun productAddBasketClick(productListItem: BasketProduct, count:Int) {
+        viewModel.addBasket(productListItem, count)
+    }
+
 }

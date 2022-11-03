@@ -34,6 +34,10 @@ object BindingAdapter {
     fun productRatingCount(view: TextView, count: Int?) {
         view.text = count.toString()
     }
-
+    @JvmStatic
+    @BindingAdapter("productCount")
+    fun productCount(view: TextView, count: Int?) {
+        view.text = count.toString()
+    }
 
 }

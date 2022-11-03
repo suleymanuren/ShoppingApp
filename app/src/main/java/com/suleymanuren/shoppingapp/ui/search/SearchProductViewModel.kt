@@ -8,8 +8,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.suleymanuren.shoppingapp.data.model.ProductListItem
 import com.suleymanuren.shoppingapp.data.remote.utils.DataState
 import com.suleymanuren.shoppingapp.domain.repository.ProductsRepository
-import com.suleymanuren.shoppingapp.ui.product.HomeViewEvent
-import com.suleymanuren.shoppingapp.ui.product.HomeViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
