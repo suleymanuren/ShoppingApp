@@ -17,9 +17,6 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val productsRepository: ProductsRepository,
-    private val firebaseAuth: FirebaseAuth,
-    private val fireStore: FirebaseFirestore
-
     ) :
     ViewModel() {
     private val _uiState = MutableStateFlow<HomeViewState>(HomeViewState.Success(mutableListOf()))
@@ -33,16 +30,14 @@ class HomeViewModel @Inject constructor(
     }
 
 
-
+    //GETTING ALL PRODUCT FROM API
     private fun getProduct() {
         viewModelScope.launch {
            productsRepository.getProduct().collect {
                 when (it) {
                     is DataState.Success -> {
                         _uiState.value = HomeViewState.Success(it.data)
-
                         for (i in it.data.size - 1 downTo 0) {
-
                             ProductListItem(
                                 id = it.data[i].id,
                                 title = it.data[i].title,
@@ -51,20 +46,14 @@ class HomeViewModel @Inject constructor(
                                 category = it.data[i].category,
                                 image = it.data[i].image,
                                 rating = it.data[i].rating
-
                             )
                             ProductListItem.Category(
                                 id = it.data[i].id,
                                 category = it.data[i].category
                             )
                         }
-
-                        Log.d("DENEME3", "getProduct: ${it.data.size}")
-
                     }
-
                     is DataState.Error -> {
-                        Log.d("DENEME2", "getProduct: ${it.error?.status_message}")
                         _uiEvent.emit(HomeViewEvent.ShowError(it.error?.status_message))
                     }
                     is DataState.Loading -> {

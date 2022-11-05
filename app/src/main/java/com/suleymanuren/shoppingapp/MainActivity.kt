@@ -61,6 +61,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.userProfileFragment -> {
                     binding.bottomNavigation.visible()
                 }
+                R.id.productBasketFragment -> {
+                    binding.bottomNavigation.invisible()
+                }
             }
         }
     }
@@ -92,6 +95,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.productBasketFragment -> {
                     supportActionBar?.show()
+
                 }
             }
         }
@@ -134,7 +138,6 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.productFragment -> {
                     binding.fab.setOnClickListener {
-
                         navController.navigate(R.id.action_productFragment_to_productBasketFragment,)
                     }
                 }

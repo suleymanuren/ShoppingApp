@@ -67,8 +67,7 @@ class ProductDetailFragment : Fragment(), OnProductDetailClickListener {
         }
     }
 
-    override fun productAddBasketClick(productListItem: BasketProduct, count:Int) {
-        viewModel.addBasket(productListItem, count)
+    override fun productAddBasketClick(productListItem: BasketProduct, count:Int,totalPrice: Double) {
+        viewModel.addBasket(productListItem, count,totalPrice)
     }
-
 }

@@ -37,16 +37,17 @@ class HomeProductDetailAdapter(private val listener: ProductDetailFragment) :
     class ProductDetailViewHolder(private val binding: ItemDetailLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: BasketProduct, listener: OnProductDetailClickListener) {
-            readMoreLess()
-            productCount()
+
 
             binding.dataHolder = data
             binding.listener = listener
             binding.executePendingBindings()
-
+            readMoreLess()
+            productCount()
             binding.productAddToCart.setOnClickListener {
                 val productCount = binding.quantity.text.toString().toInt()
-                listener.productAddBasketClick(data, count = productCount)
+                val totalPrice = productCount.toDouble()*data.price
+                listener.productAddBasketClick(data, count = productCount, totalPrice = totalPrice)
             }
         }
         private fun productCount(){
@@ -55,10 +56,7 @@ class HomeProductDetailAdapter(private val listener: ProductDetailFragment) :
                 {
                     binding.quantity.text = (binding.quantity.text.toString().toInt() + 1).toString()
                     binding.increase.visible()
-                    val count = binding.quantity.text.toString().toInt()
-                    Bundle().apply{
-                        putInt("productCount",count)
-                    }
+
                 }
                 else {
                     Toast.makeText(binding.root.context,"You can't add more than 10",Toast.LENGTH_SHORT).show()
@@ -97,9 +95,6 @@ class HomeProductDetailAdapter(private val listener: ProductDetailFragment) :
             binding.readMore.invisible()
          }
             }
-
-
-
         }
     }
 
@@ -117,5 +112,5 @@ class HomeProductDetailAdapter(private val listener: ProductDetailFragment) :
     }
 
     interface OnProductDetailClickListener {
-            fun productAddBasketClick(data: BasketProduct,count:Int)
+            fun productAddBasketClick(data: BasketProduct,count:Int,totalPrice: Double)
     }

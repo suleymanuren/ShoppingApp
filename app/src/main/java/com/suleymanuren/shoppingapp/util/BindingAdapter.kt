@@ -6,8 +6,8 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 
- // THIS PAGE IS FOR ITEM LIST XML
 
+// THIS PAGE IS FOR ITEM LIST XML
 object BindingAdapter {
 
     @JvmStatic
@@ -17,6 +17,7 @@ object BindingAdapter {
             .load("$url")
             .into(view)
     }
+
     // FOR EXAMPLE PRICE IS DOUBLE AT PRODUCT MODEL BUT WE WANT TO SHOW IT AS STRING
     // SO WE USE THIS BINDING ADAPTER TO CONVERT IT TO STRING
     @JvmStatic
@@ -36,8 +37,9 @@ object BindingAdapter {
     }
     @JvmStatic
     @BindingAdapter("productCount")
-    fun productCount(view: TextView, count: Int?) {
+    fun productCount(view: TextView, count: Double?) {
         view.text = count.toString()
     }
+
 
 }

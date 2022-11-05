@@ -6,6 +6,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.suleymanuren.shoppingapp.data.model.BasketProduct
 import com.suleymanuren.shoppingapp.data.model.ProductListItem
@@ -63,35 +64,37 @@ class ProductDetailViewModel @Inject constructor(
     }
 
     //ADDING PRODUCT TO BASKET
-    fun addBasket(data: BasketProduct,count: Int) {
+    fun addBasket(data: BasketProduct,count: Int,totalPrice:Double) {
 
         viewModelScope.launch {
             val userId = firebaseAuth.currentUser?.uid
             if (data.id != null) {
-                insertProduct(userId.toString(), data,count)
+                insertProduct(userId.toString(), data,count,totalPrice)
             } else {
-                insertProduct(userId.toString(), data,count)
+                insertProduct(userId.toString(), data,count,totalPrice)
             }
 
         }
     }
 
     //INSERTING PRODUCT TO BASKET
-    private fun insertProduct(userId: String, data: BasketProduct,count: Int) {
+    private fun insertProduct(userId: String, data: BasketProduct,count: Int,totalPrice: Double) {
         fireStore.collection("productBasket").document(userId.toString()).collection("product")
             .let { ref ->
+                Log.d("DENEME2", "insertProduct: ${count}")
                 ref.document("${data.id}")
                     .set(
-                        mapOf(
+                        hashMapOf(
                             "id" to data.id,
                             "title" to data.title,
                             "description" to data.description,
                             "image" to data.image,
                             "price" to data.price,
                             "category" to data.category,
-                            "count" to count,
-                            "rating" to data.rating
-                        )
+                            "count" to FieldValue.increment(count.toDouble()),
+                            "rating" to data.rating,
+                            "totalPrice" to FieldValue.increment(totalPrice)
+                        ), com.google.firebase.firestore.SetOptions.merge()
                     )
 
                     .addOnSuccessListener { documentReference ->
@@ -102,9 +105,7 @@ class ProductDetailViewModel @Inject constructor(
                                     }
                                     safeList
                                 }?.toMutableList())
-
                             _uiEvent.emit(ProductViewEvent.ShowError("Product added to basket"))
-
                         }
                     }
                     .addOnFailureListener { error ->
@@ -115,8 +116,6 @@ class ProductDetailViewModel @Inject constructor(
                     }
             }
     }
-
-
 }
 
 sealed class ProductViewEvent {

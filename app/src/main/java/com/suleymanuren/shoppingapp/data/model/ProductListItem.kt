@@ -2,6 +2,7 @@ package com.suleymanuren.shoppingapp.data.model
 
 
 import android.os.Bundle
+import com.google.firebase.firestore.FieldValue
 import com.google.gson.annotations.SerializedName
 
 data class ProductListItem(
@@ -36,12 +37,13 @@ data class ProductListItem(
 
 
 data class BasketProduct(
-    val id : Int,
+    val id: Int,
     val category: String,
     val title: String,
     val description: String,
     val image: String,
     val price: Double,
     val rating: ProductListItem.Rating,
-    val count: Int = 1,
+    var count: Double,
+    val totalPrice: Double,
 )

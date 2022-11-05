@@ -35,8 +35,8 @@ class SearchFragment : Fragment(), OnSearchProductClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       searchProduct()
-        getCatogories()
+        searchProduct()
+        setCatogories()
         categoriesButtonClicked()
 
 
@@ -51,13 +51,10 @@ class SearchFragment : Fragment(), OnSearchProductClickListener {
                                 }
                         }
                         is ProductSearchViewState.Loading -> {
-
                         }
-
                     }
                 }
             }
-
             launch {
                 viewModel.uiEvent.collect {
                     when (it) {
@@ -76,7 +73,7 @@ class SearchFragment : Fragment(), OnSearchProductClickListener {
     }
 
     //MANUALLY SETTING CATEGORIES TO BUTTONS
-    private fun getCatogories(){
+    private fun setCatogories(){
         binding.productCategoryList.A.text = "Jewelery"
         binding.productCategoryList.B.text = "Electronics"
         binding.productCategoryList.C.text = "Men's Clothing"
@@ -84,6 +81,7 @@ class SearchFragment : Fragment(), OnSearchProductClickListener {
 
     }
 
+    //USER CHOSE FROM LISTED CATEGORIES
     private fun categoriesButtonClicked(){
         binding.productCategoryList.A.setOnClickListener {
             viewModel.searchProduct("jewelery")
@@ -99,6 +97,7 @@ class SearchFragment : Fragment(), OnSearchProductClickListener {
         }
     }
 
+    //LISTENING SEARCH BUTTON USER INPUT
     private fun searchProduct() {
         binding.searchView.setOnQueryTextListener(object :
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
@@ -115,12 +114,11 @@ class SearchFragment : Fragment(), OnSearchProductClickListener {
                             viewModel.searchProduct("women's clothing")
                         }
                     } else {
-                        viewModel.searchProduct("")
+                        viewModel.getProduct()
                     }
                 }
                 return false
             }
-
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let { viewModel.searchProduct(it) }
                 return false

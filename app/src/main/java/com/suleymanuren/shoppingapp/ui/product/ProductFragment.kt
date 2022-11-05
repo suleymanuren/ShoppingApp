@@ -70,6 +70,7 @@ class ProductFragment : Fragment(), OnProductClickListener {
         }
     }
 
+    //SEND PRODUCT ID TO PRODUCT DETAIL FOR DETAIL FUNCTION FRAGMENT WITH NAVIGATION FROM MAIN PRODUCT PAGE
     override fun onProductClick(data: ProductListItem,view: View) {
         findNavController().navigate(R.id.action_productFragment_to_productDetailFragment, Bundle().apply {
             putInt("productId", data.id)

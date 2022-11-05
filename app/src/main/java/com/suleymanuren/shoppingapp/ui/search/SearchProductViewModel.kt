@@ -33,23 +33,6 @@ class ProductSearchViewModel @Inject constructor(
         getProduct()
     }
 
-
-     fun getCategories() {
-        viewModelScope.launch {
-            productsRepository.getCategories().collect {
-                when (it) {
-                    is DataState.Success -> {
-                        Log.d("DENEME2", "getCategories: ${it.data}")
-                    }
-                    is DataState.Error -> {
-                    }
-                    is DataState.Loading -> {
-                    }
-                }
-            }
-        }
-    }
-
     fun searchProduct(query: String) {
         viewModelScope.launch {
             productsRepository.searchProduct(query).collect {
@@ -69,7 +52,7 @@ class ProductSearchViewModel @Inject constructor(
     }
 
     //AT START GETTING ALL PRODUCTS
-    private fun getProduct() {
+     fun getProduct() {
         viewModelScope.launch {
             productsRepository.getProduct().collect {
                 when (it) {
@@ -94,6 +77,7 @@ class ProductSearchViewModel @Inject constructor(
 
                     }
                     is DataState.Error -> {
+                        Log.d("deneme3","q")
                         _uiEvent.emit(ProductSearchViewEvent.ShowError(it.error?.status_message))
                     }
                     is DataState.Loading -> {
