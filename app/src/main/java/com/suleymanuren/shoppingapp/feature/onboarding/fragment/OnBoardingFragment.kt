@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.navigation.Navigation
 import androidx.viewpager2.widget.ViewPager2
 import com.suleymanuren.shoppingapp.R
@@ -32,6 +33,9 @@ private lateinit var binding: FragmentOnBoardingBinding
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            // With blank your fragment BackPressed will be disabled.
+        }
         setUp()
     }
 

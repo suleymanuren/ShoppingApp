@@ -4,6 +4,7 @@ import android.app.Fragment
 import android.os.Bundle
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -11,6 +12,7 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.badge.BadgeUtils
 import com.suleymanuren.shoppingapp.databinding.ActivityMainBinding
+import com.suleymanuren.shoppingapp.feature.splash.SplashFragment
 import com.suleymanuren.shoppingapp.util.gone
 import com.suleymanuren.shoppingapp.util.invisible
 import com.suleymanuren.shoppingapp.util.visible
@@ -35,9 +37,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
    //Bottom app bar navigation
     private fun setupBottomAppBarNavigation() {
-
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
@@ -167,6 +169,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 
 
 

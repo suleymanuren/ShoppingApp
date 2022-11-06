@@ -58,6 +58,7 @@ class HomeViewModel @Inject constructor(
                     }
                     is DataState.Loading -> {
                         _uiState.value = HomeViewState.Loading
+
                     }
                 }
 

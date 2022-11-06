@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -15,6 +17,8 @@ import com.suleymanuren.shoppingapp.data.model.ProductListItem
 import com.suleymanuren.shoppingapp.databinding.FragmentProductBinding
 import com.suleymanuren.shoppingapp.ui.product.adapter.HomeProductAdapter
 import com.suleymanuren.shoppingapp.ui.product.adapter.OnProductClickListener
+import com.suleymanuren.shoppingapp.util.invisible
+import com.suleymanuren.shoppingapp.util.visible
 
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -35,6 +39,9 @@ class ProductFragment : Fragment(), OnProductClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            // With blank your fragment BackPressed will be disabled.
+        }
 
         lifecycleScope.launchWhenResumed {
             launch {
@@ -45,8 +52,10 @@ class ProductFragment : Fragment(), OnProductClickListener {
                                 HomeProductAdapter(this@ProductFragment).apply {
                                     submitList(it.product)
                                 }
+                            binding.progressBar.invisible()
                         }
                         is HomeViewState.Loading -> {
+                            binding.progressBar.visible()
 
                         }
 

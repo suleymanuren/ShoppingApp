@@ -6,10 +6,12 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -40,6 +42,9 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            // With blank your fragment BackPressed will be disabled.
+        }
         observer()
         binding.loginBtn.setOnClickListener {
             if (validation()) {
@@ -57,12 +62,16 @@ class LoginFragment : Fragment() {
                 is UiState.Loading -> {
                     binding.loginBtn.text = ""
                     binding.loginProgress.show()
+
                 }
                 is UiState.Failure -> {
                     binding.loginBtn.text = "Login"
-                    binding.loginProgress.show()
-
-                    Toast.makeText(requireContext(), it.error, Toast.LENGTH_SHORT).show()
+                        binding.loginProgress.show()
+                        Toast.makeText(requireContext(), it.error, Toast.LENGTH_SHORT).show()
+                    Log.d("DENEME2", "observer: ${it.error}")
+                    if (it.error == "Authentication failed, Check email and password"){
+                        binding.loginProgress.hide()
+                    }
                 }
                 is UiState.Success<*> -> {
                     sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)

@@ -155,7 +155,7 @@
                     android:id="@+id/decrease"
                     android:text="-"
                     android:layout_width="40dp"
-                    android:layout_height="40dp"/>
+                    android:layout_height="wrap_content"/>
                 <TextView
                     style="@style/TextAppearance.Material3.TitleSmall"
 
@@ -170,7 +170,7 @@
                     android:id="@+id/increase"
                     android:text="+"
                     android:layout_width="40dp"
-                    android:layout_height="40dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <Button
                     android:layout_marginLeft="10dp"

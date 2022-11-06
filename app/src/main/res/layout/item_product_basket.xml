@@ -12,7 +12,6 @@
     </data>
 
     <androidx.cardview.widget.CardView
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="4dp"
@@ -24,7 +23,6 @@
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <ImageView
                 android:id="@+id/product_img"
                 android:layout_width="108dp"
@@ -55,9 +53,8 @@
                 android:paddingTop="8dp"
                 android:maxLines="2"
                 android:textSize="12sp"
-
                 android:id="@+id/product_description"
-                style="@style/TextAppearance.Material3.TitleSmall"
+                style="@style/TextAppearance.Material3.BodyLarge"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
@@ -70,7 +67,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
+                android:gravity="start"
                 app:layout_constraintTop_toBottomOf="@id/product_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/product_img">
@@ -101,8 +98,9 @@
                     android:text="+" />
 
                 <TextView
+                    android:textSize="14dp"
                     android:id="@+id/product_price_text"
-                    style="@style/TextAppearance.Material3.TitleMedium"
+                    style="@style/TextAppearance.Material3.BodyMedium"
                     android:layout_marginLeft="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,10 +108,11 @@
                     android:text="Total Price: " />
 
                 <TextView
+                    android:textSize="14dp"
                     android:id="@+id/product_price"
                     android:maxLines="1"
                     android:maxLength="7"
-                    style="@style/TextAppearance.Material3.TitleMedium"
+                    style="@style/TextAppearance.Material3.BodyMedium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:productPrice="@{dataHolder.price * dataHolder.count}"

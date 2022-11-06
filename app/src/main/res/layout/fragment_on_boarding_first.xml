@@ -12,7 +12,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="10dp"
+            android:textAllCaps="false"
             android:text="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
             android:textAlignment="center"
             android:textColor="#263859"
@@ -20,13 +20,14 @@
             app:layout_constraintBottom_toTopOf="@id/ivIcon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-        <com.airbnb.lottie.LottieAnimationView
 
+        <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/ivIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:scaleType= "fitXY"
+            android:adjustViewBounds="true"
             android:layout_gravity="center"
-            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,14 +37,15 @@
             app:lottie_rawRes="@raw/onboarding1" />
 
 
+
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:text="Welcome to E-Shop App"
             android:textColor="#17223B"
             android:textSize="24sp"
+            android:textAllCaps="false"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,10 +54,10 @@
 
         <TextView
             android:id="@+id/tvDescription"
+            android:textAllCaps="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="10dp"
             android:text="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."
             android:textAlignment="center"
             android:textColor="#263859"

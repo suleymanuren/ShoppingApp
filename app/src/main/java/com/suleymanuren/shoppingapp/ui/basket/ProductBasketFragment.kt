@@ -44,14 +44,6 @@ class ProductBasketFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // INSTANTLY NAVIGATING TO HOMEPAGE DOESNT MATTER FRAGMENT LAYER
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                findNavController().navigate(R.id.action_productBasketFragment_to_productFragment)
-
-            }
-        })
-
 
         //LISTING PRODUCTS FROM USER BASKET LIST
         viewModel.getProductBasketList()

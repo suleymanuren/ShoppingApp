@@ -5,13 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.suleymanuren.shoppingapp.R
 import com.suleymanuren.shoppingapp.data.model.BasketProduct
 import com.suleymanuren.shoppingapp.databinding.FragmentProductDetailBinding
 import com.suleymanuren.shoppingapp.ui.productDetail.adapter.HomeProductDetailAdapter
 import com.suleymanuren.shoppingapp.ui.productDetail.adapter.OnProductDetailClickListener
+import com.suleymanuren.shoppingapp.util.invisible
+import com.suleymanuren.shoppingapp.util.visible
 
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -42,9 +47,10 @@ class ProductDetailFragment : Fragment(), OnProductDetailClickListener {
                                 HomeProductDetailAdapter(this@ProductDetailFragment,).apply {
                                     submitList(it.product)
                                 }
+                            binding.progressBar.invisible()
                         }
                         is ProductViewState.Loading -> {
-
+                            binding.progressBar.visible()
                         }
 
                     }

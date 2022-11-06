@@ -5,9 +5,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -39,6 +42,9 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            // With blank your fragment BackPressed will be disabled.
+        }
         observer()
         binding.registerBtn.setOnClickListener {
             if (validation()){
@@ -62,6 +68,17 @@ class RegisterFragment : Fragment() {
                 is UiState.Failure -> {
                     binding.registerBtn.text = "Register"
                     binding.registerProgress.show()
+                    Toast.makeText(requireContext(), it.error, Toast.LENGTH_SHORT).show()
+                    Log.d("TAG", "observer: ${it.error}")
+                    if (it.error == "The email address is already in use by another account.")
+                    {
+                    if (it.error == "Authentication failed, Email already registered."){
+                        binding.registerProgress.hide()
+                    }
+                        binding.registerProgress.hide()
+
+                    }
+
                 }
                 is UiState.Success<*> -> {
                     sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)

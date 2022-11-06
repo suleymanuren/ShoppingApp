@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
@@ -16,6 +18,8 @@ import com.suleymanuren.shoppingapp.data.model.ProductListItem
 import com.suleymanuren.shoppingapp.databinding.FragmentSearchBinding
 import com.suleymanuren.shoppingapp.ui.search.adapter.OnSearchProductClickListener
 import com.suleymanuren.shoppingapp.ui.search.adapter.SearchProductAdapter
+import com.suleymanuren.shoppingapp.util.invisible
+import com.suleymanuren.shoppingapp.util.visible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -35,6 +39,9 @@ class SearchFragment : Fragment(), OnSearchProductClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            // With blank your fragment BackPressed will be disabled.
+        }
         searchProduct()
         setCatogories()
         categoriesButtonClicked()
@@ -49,8 +56,10 @@ class SearchFragment : Fragment(), OnSearchProductClickListener {
                                 SearchProductAdapter(this@SearchFragment).apply {
                                     submitList(it.product)
                                 }
+                            binding.progressBar.invisible()
                         }
                         is ProductSearchViewState.Loading -> {
+                            binding.progressBar.visible()
                         }
                     }
                 }
