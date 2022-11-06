@@ -1,10 +1,12 @@
 package com.suleymanuren.shoppingapp
 
+import android.app.Fragment
 import android.os.Bundle
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.badge.BadgeUtils
@@ -31,12 +33,14 @@ class MainActivity : AppCompatActivity() {
         hideFloatingActionButton()
         floatingActionButtonNavigation()
     }
+
+
    //Bottom app bar navigation
     private fun setupBottomAppBarNavigation() {
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
-
     }
 
     //Hide bottom navigation bar for splash and auth tablayout
@@ -86,16 +90,18 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.searchFragment -> {
                     supportActionBar?.show()
+                    supportActionBar?.setTitle("Shopping App Search")
                 }
                 R.id.userProfileFragment -> {
                     supportActionBar?.show()
+                    supportActionBar?.setTitle("Shopping App User Profile")
                 }
                 R.id.productDetailFragment -> {
                     supportActionBar?.hide()
                 }
                 R.id.productBasketFragment -> {
                     supportActionBar?.show()
-
+                    supportActionBar?.title = "Shopping App Basket"
                 }
             }
         }

@@ -2,6 +2,7 @@ package com.suleymanuren.shoppingapp.ui.basket.adapter
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -12,6 +13,7 @@ import com.suleymanuren.shoppingapp.data.model.BasketProduct
 import com.suleymanuren.shoppingapp.data.model.ProductListItem
 import com.suleymanuren.shoppingapp.databinding.ItemProductBasketBinding
 import com.suleymanuren.shoppingapp.ui.basket.ProductBasketFragment
+import com.suleymanuren.shoppingapp.util.invisible
 import com.suleymanuren.shoppingapp.util.visible
 
 class ProductBasketAdapter(private val listener : ProductBasketFragment) :
@@ -56,11 +58,6 @@ class ProductBasketAdapter(private val listener : ProductBasketFragment) :
                 if (binding.quantity.text.toString().toDouble().toInt() >= 2) {
                     binding.quantity.text = (binding.quantity.text.toString().toDouble().toInt() - 1).toString()
                     productTotalPriceCalculate()
-                    binding.increase.visible()
-                    val count = binding.quantity.text.toString().toDouble().toInt()
-                    Bundle().apply{
-                        putInt("productCount",count)
-                    }
                 } else {
                     Toast.makeText(binding.root.context, "You can't add less than 1", Toast.LENGTH_SHORT).show()
                 }
@@ -74,6 +71,7 @@ class ProductBasketAdapter(private val listener : ProductBasketFragment) :
             val getTotalProductPrice = productPrice?.times(productCount)
             binding.productPrice.text = "$"+getTotalProductPrice.toString()
         }
+
 }
 
 class ProductBasketDiffUtil : DiffUtil.ItemCallback<BasketProduct>() {

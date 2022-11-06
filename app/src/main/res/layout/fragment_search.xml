@@ -16,6 +16,7 @@
             android:layout_marginHorizontal="24dp"
             app:layout_constraintBottom_toTopOf="@+id/product_category_list"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:defaultQueryHint="Search for categories"/>
 
@@ -24,21 +25,21 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchView"            android:id="@id/product_category_list"
+            app:layout_constraintTop_toBottomOf="@+id/searchView"
+            app:layout_constraintBottom_toTopOf="@id/product_list_recyclerview"
+            android:id="@id/product_category_list"
             layout="@layout/item_product_categorie_list"/>
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/product_list_recyclerview"
-            android:layout_marginTop="7dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/product_category_list"
             app:spanCount="1"
             tools:listitem="@layout/item_product_layout" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

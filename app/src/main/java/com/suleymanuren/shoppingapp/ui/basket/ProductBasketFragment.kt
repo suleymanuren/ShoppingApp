@@ -1,11 +1,17 @@
 package com.suleymanuren.shoppingapp.ui.basket
 
 import android.app.AlertDialog
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -35,8 +41,17 @@ class ProductBasketFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // INSTANTLY NAVIGATING TO HOMEPAGE DOESNT MATTER FRAGMENT LAYER
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_productBasketFragment_to_productFragment)
+
+            }
+        })
+
 
         //LISTING PRODUCTS FROM USER BASKET LIST
         viewModel.getProductBasketList()
@@ -50,6 +65,10 @@ class ProductBasketFragment : Fragment() {
                 .setMessage("Order will be delivered in 1-2 days")
                 .setPositiveButton("Okey") { dialog, which ->
                     findNavController().navigate(R.id.action_productBasketFragment_to_productFragment)
+                    Toast.makeText(requireContext(), "Order Created", Toast.LENGTH_SHORT).show()
+                }
+                .setNegativeButton("Cancel") { dialog, which ->
+                    dialog.dismiss()
                 }
                 .show()
         }
@@ -60,7 +79,6 @@ class ProductBasketFragment : Fragment() {
             navController.navigate(R.id.action_productBasketFragment_to_productFragment)
         }
 
-        // SENDING FETCHED PRODUCTS FROM UISTATE TO ADAPTER
         lifecycleScope.launchWhenResumed {
             launch {
                 viewModel.uiState.collect {
@@ -87,7 +105,15 @@ class ProductBasketFragment : Fragment() {
                                 for (i in 0 until it.data.size) {
                                     total += it.data[i]!!.totalPrice
                                 }
-                                binding.totalBasketPrice.text = total.toString()
+
+                                binding.totalBasketPrice.text = "$" +total.toString()
+
+
+
+
+
+
+
                             }
                         }
                         is ProductBasketViewState.Loading -> {
@@ -103,5 +129,7 @@ class ProductBasketFragment : Fragment() {
                 }
             }
         }
+
     }
+
 }
