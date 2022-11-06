@@ -2,6 +2,7 @@ package com.suleymanuren.shoppingapp.ui.userProfile
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -52,6 +53,8 @@ class UserProfileFragment : Fragment() {
 
     }
     private fun userLogout() {
+        FirebaseAuth.getInstance().signOut()
+        Intent.FLAG_ACTIVITY_CLEAR_TASK
         sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putBoolean("isLoggedIn", false)
