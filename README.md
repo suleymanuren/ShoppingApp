@@ -17,9 +17,9 @@ There are many products in the application that the user can purchase. To mentio
 <hr>
 <p float="left">
 
-<img src="https://github.com/suleymanuren/ShoppingApp/blob/main/ReadMeAssets/onboardLogin.gif"/>
-<img src="https://github.com/suleymanuren/ShoppingApp/blob/main/ReadMeAssets/userLoginLogout.gif"/>
-<img src="https://github.com/suleymanuren/ShoppingApp/blob/main/ReadMeAssets/productBasket.gif"/>
+<img src="https://github.com/suleymanuren/ShoppingApp/blob/main/ReadMeAssets/onboardLogin.gif" width="195"/>
+<img src="https://github.com/suleymanuren/ShoppingApp/blob/main/ReadMeAssets/userLoginLogout.gif" width="195"/>
+<img src="https://github.com/suleymanuren/ShoppingApp/blob/main/ReadMeAssets/productBasket.gif" width="195"/>
 </p>
 
 <hr>
