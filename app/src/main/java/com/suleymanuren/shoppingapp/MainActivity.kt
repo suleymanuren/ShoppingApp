@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         hideTopBar()
         hideFloatingActionButton()
         floatingActionButtonNavigation()
+
+
     }
 
 
@@ -89,6 +91,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.productFragment -> {
                     supportActionBar?.show()
+                    supportActionBar?.title = "Shopping App"
                 }
                 R.id.searchFragment -> {
                     supportActionBar?.show()
@@ -126,13 +129,13 @@ class MainActivity : AppCompatActivity() {
                     binding.fab.visible()
                 }
                 R.id.searchFragment -> {
-                    binding.fab.visible()
+                    binding.fab.invisible()
                 }
                 R.id.userProfileFragment -> {
-                    binding.fab.visible()
+                    binding.fab.invisible()
                 }
                 R.id.productDetailFragment -> {
-                    binding.fab.visible()
+                    binding.fab.invisible()
                 }
                 R.id.productBasketFragment -> {
                     binding.fab.invisible()
@@ -141,6 +144,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //Floating action button navigation
     private fun floatingActionButtonNavigation() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
@@ -149,28 +153,14 @@ class MainActivity : AppCompatActivity() {
                         navController.navigate(R.id.action_productFragment_to_productBasketFragment,)
                     }
                 }
-                R.id.productDetailFragment -> {
-                    binding.fab.setOnClickListener {
-                        navController.navigate(R.id.action_productDetailFragment_to_productBasketFragment)
-                    }
-                }
-                R.id.searchFragment -> {
-                    binding.fab.setOnClickListener {
-                        navController.navigate(R.id.action_searchFragment_to_productBasketFragment)
-                    }
-                }
-                R.id.userProfileFragment -> {
-                    binding.fab.setOnClickListener {
-                        navController.navigate(R.id.action_userProfileFragment_to_productBasketFragment)
-                    }
-                }
             }
         }
 
 
     }
 
+    }
 
 
 
-}
+

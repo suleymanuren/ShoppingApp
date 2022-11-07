@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
@@ -43,7 +44,6 @@ class SearchFragment : Fragment(), OnSearchProductClickListener {
             // With blank your fragment BackPressed will be disabled.
         }
         searchProduct()
-        setCatogories()
         categoriesButtonClicked()
 
 
@@ -81,28 +81,24 @@ class SearchFragment : Fragment(), OnSearchProductClickListener {
 
     }
 
-    //MANUALLY SETTING CATEGORIES TO BUTTONS
-    private fun setCatogories(){
-        binding.productCategoryList.A.text = "Jewelery"
-        binding.productCategoryList.B.text = "Electronics"
-        binding.productCategoryList.C.text = "Men's Clothing"
-        binding.productCategoryList.D.text = "Women's Clothing"
-
-    }
-
     //USER CHOSE FROM LISTED CATEGORIES
     private fun categoriesButtonClicked(){
         binding.productCategoryList.A.setOnClickListener {
             viewModel.searchProduct("jewelery")
+            Toast.makeText(requireContext(), "Selected Jewelery", Toast.LENGTH_SHORT).show()
         }
         binding.productCategoryList.B.setOnClickListener {
             viewModel.searchProduct("electronics")
+            Toast.makeText(requireContext(), "Selected Electronics", Toast.LENGTH_SHORT).show()
         }
         binding.productCategoryList.C.setOnClickListener {
             viewModel.searchProduct("men's clothing")
+            Toast.makeText(requireContext(), "Selected Men's Clothing", Toast.LENGTH_SHORT).show()
         }
         binding.productCategoryList.D.setOnClickListener {
             viewModel.searchProduct("women's clothing")
+            Toast.makeText(requireContext(), "Selected Women's clothing", Toast.LENGTH_SHORT).show()
+
         }
     }
 
@@ -115,12 +111,24 @@ class SearchFragment : Fragment(), OnSearchProductClickListener {
                     if (newText.length >= 2) {
                         if (newText == "me") {
                             viewModel.searchProduct("men's clothing")
+                            binding.searchView.setQuery("Men's Clothing", false)
+                            Toast.makeText(requireContext(), "Getting Men's clothing", Toast.LENGTH_SHORT).show()
+
                         } else if (newText == "je") {
                             viewModel.searchProduct("jewelery")
+                            binding.searchView.setQuery("Jewelery", false)
+                            Toast.makeText(requireContext(), "Getting Jewelery", Toast.LENGTH_SHORT).show()
+
                         } else if (newText == "el") {
                             viewModel.searchProduct("electronics")
+                            binding.searchView.setQuery("Electronics", false)
+                            Toast.makeText(requireContext(), "Getting Electronics", Toast.LENGTH_SHORT).show()
+
                         } else if (newText == "wo") {
                             viewModel.searchProduct("women's clothing")
+                            binding.searchView.setQuery("Women's Clothing", false)
+                            Toast.makeText(requireContext(), "Getting Women's clothing", Toast.LENGTH_SHORT).show()
+
                         }
                     } else {
                         viewModel.getProduct()

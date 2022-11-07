@@ -13,6 +13,7 @@
             android:background="@color/white">
 
             <Button
+                android:text="Jewelery"
                 android:id="@+id/A"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -23,6 +24,7 @@
                 android:textColor="@color/black"/>
 
             <Button
+                android:text="Electronics"
                 android:id="@+id/B"
                 android:textAllCaps="false"
                 android:layout_width="wrap_content"
@@ -33,7 +35,7 @@
                 android:textColor="@color/black" />
 
             <Button
-
+                android:text="Men's Clothing"
                 android:id="@+id/C"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +46,7 @@
                 android:textColor="@color/black"/>
 
             <Button
-
+                android:text="Women's Clothing"
                 android:id="@+id/D"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

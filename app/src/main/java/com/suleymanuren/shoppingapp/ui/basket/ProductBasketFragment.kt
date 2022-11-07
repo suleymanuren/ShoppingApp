@@ -24,6 +24,7 @@ import com.suleymanuren.shoppingapp.util.invisible
 import com.suleymanuren.shoppingapp.util.show
 import com.suleymanuren.shoppingapp.util.visible
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.launch
 
 
@@ -45,6 +46,7 @@ class ProductBasketFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         //LISTING PRODUCTS FROM USER BASKET LIST
         viewModel.getProductBasketList()
 
@@ -56,6 +58,7 @@ class ProductBasketFragment : Fragment() {
                 .setTitle("Your order has been received")
                 .setMessage("Order will be delivered in 1-2 days")
                 .setPositiveButton("Okey") { dialog, which ->
+
                     findNavController().navigate(R.id.action_productBasketFragment_to_productFragment)
                     Toast.makeText(requireContext(), "Order Created", Toast.LENGTH_SHORT).show()
                 }

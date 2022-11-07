@@ -28,9 +28,6 @@
         <action
             android:id="@+id/action_searchFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
-        <action
-            android:id="@+id/action_searchFragment_to_productBasketFragment"
-            app:destination="@id/productBasketFragment" />
     </fragment>
 
     <fragment
@@ -43,9 +40,6 @@
         <action
             android:id="@+id/action_userProfileFragment_to_authFragment"
             app:destination="@id/authFragment" />
-        <action
-            android:id="@+id/action_userProfileFragment_to_productBasketFragment"
-            app:destination="@id/productBasketFragment" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_splash"
@@ -88,11 +82,7 @@
         android:id="@+id/productDetailFragment"
         tools:layout="@layout/item_detail_layout"
         android:name="com.suleymanuren.shoppingapp.ui.productDetail.ProductDetailFragment"
-        android:label="ProductDetailFragment" >
-        <action
-            android:id="@+id/action_productDetailFragment_to_productBasketFragment"
-            app:destination="@id/productBasketFragment" />
-    </fragment>
+        android:label="ProductDetailFragment" />
     <fragment
         tools:layout="@layout/item_product_basket"
         android:id="@+id/productBasketFragment"
