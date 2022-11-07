@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -154,12 +155,8 @@ class RegisterFragment : Fragment() {
         if (binding.emailEt.text.isNullOrEmpty()){
             isValid = false
             binding.emailEt.error = "Email is required"
-        }
-        if (binding.emailEt.text.isNullOrEmpty()){
-            isValid = false
-            binding.emailEt.error = "Email is required"
         }else{
-            if (!binding.emailEt.text.toString().isValidEmail()){
+            if (!binding.emailEt.text.toString().isValidEmail(email = binding.emailEt.text.toString())){
                 isValid = false
                 binding.emailEt.error = "Email is not valid"
             }

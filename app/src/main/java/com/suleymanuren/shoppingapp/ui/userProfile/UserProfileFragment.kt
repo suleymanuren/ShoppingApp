@@ -15,6 +15,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.auth.User
+import com.suleymanuren.shoppingapp.MainActivity
 import com.suleymanuren.shoppingapp.R
 import com.suleymanuren.shoppingapp.databinding.FragmentUserProfileBinding
 
@@ -53,13 +55,21 @@ class UserProfileFragment : Fragment() {
 
     }
     private fun userLogout() {
-        FirebaseAuth.getInstance().signOut()
-        Intent.FLAG_ACTIVITY_CLEAR_TASK
+
         sharedPreferences = requireActivity().getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putBoolean("isLoggedIn", false)
         editor.apply()
         Navigation.findNavController(binding.root).navigate(R.id.action_userProfileFragment_to_authFragment)
+
+        FirebaseAuth.getInstance().signOut()
+        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        Intent.FLAG_ACTIVITY_CLEAR_TOP
+
+
+        val intent = Intent(requireContext(), MainActivity::class.java)
+        startActivity(intent)
+        requireActivity().finish()
     }
 
     private fun getUserData() {

@@ -112,7 +112,7 @@ class LoginFragment : Fragment() {
             isValid = false
             binding.emailEt.error = "Email is required"
         }else{
-            if (!binding.emailEt.text.toString().isValidEmail()){
+            if (!binding.emailEt.text.toString().isValidEmail(email = binding.emailEt.text.toString())){
                 isValid = false
                 binding.emailEt.error = "Email is not valid"
             }

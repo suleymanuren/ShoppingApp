@@ -2,8 +2,8 @@ package com.suleymanuren.shoppingapp.util
 
 import android.view.View
 
-fun String.isValidEmail() =
-    isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
+fun String.isValidEmail(email: String) =
+    isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
 
 fun View.hide(){
     visibility = View.GONE
@@ -23,3 +23,5 @@ fun View.invisible() {
 fun View.gone() {
     this.visibility = View.GONE
 }
+
+
