@@ -41,4 +41,4 @@ For use data binding add this <b>dataBinding {
 - <b>Lottie = </b> Used this library for using animated photos I mean gif. 
 
 - <b>Retrofit = </b> Its the networking library helping to use GET, POST, DELETE. We used this app for networking
-We used this library because printing image. Usually images in the API, storing like string method. In kotlin ImageView doesn't accept directly string value. So glide helping to convert process.
+We used this library because printing image. Usually images in the API, storing like string method. In kotlin ImageView doesn't accept directly string value. So glide helping to convert process. 
